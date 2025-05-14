@@ -1,0 +1,72 @@
+﻿@page "/"
+<BlazorProject.Components.Modal ShowModal="@ShowModal"
+                                ShowModalChanged="@((newValue) => ShowModal = newValue)"
+                                Destination="@Destination"
+                                Distance="@Distance"
+                                IsUnknownDestination="@IsUnknownDestination" />
+
+
+
+<PageTitle>Home</PageTitle>
+
+
+<h1>Choose destination</h1>
+
+
+<div class="group">
+    <div id="Destination1" class="boxes" @onclick="@(() => OpenModal("Post Hus", 2.5))">Post Hus</div>
+    <div id="Destination2" class="boxes" @onclick="@(() => OpenModal("Apotekt", 3))">Apotekt</div>
+    <div id="Destination3" class="boxes" @onclick="@(() => OpenModal("Dyre Hospital", 7.8))">Dyre Hospital</div>
+    <div id="Destination4" class="boxes" @onclick="@(() => OpenModal("Lager", 1.2))">Lager</div>
+    <div id="Destination5" class="boxes" @onclick="@(() => OpenModal("Kunde Besøg", 6.3))">Kunde Besøg</div>
+    <div id="Destination6" class="boxes" @onclick="@(() => OpenModal("Kliniken", 4))">Klinikens</div>
+    <div id="Destination7" class="boxes" @onclick="@(() => OpenModal("Langt væk", 10))">Motorvej</div>
+    <div id="Destination8" class="boxes" @onclick="@(() => OpenModal("", 0))">Ukendt Destination</div>
+
+</div>
+
+
+
+@code {
+    private bool ShowModal { get; set; } = false;
+    private string Destination { get; set; } = "";
+    private double Distance { get; set; } = 0;
+    private bool IsUnknownDestination { get; set; } = false;
+
+    private void OpenModal(string destination, double distance)
+    {
+        Destination = destination;
+        Distance = distance;
+        IsUnknownDestination = string.IsNullOrWhiteSpace(destination);
+        ShowModal = true;
+    }
+
+}
+
+
+
+
+<style>
+    .group {
+        display: flex;
+        justify-content: space-evenly;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        grid-gap: 10px;
+        width: 400px;
+        height: 500px;
+        background-color: red;
+        padding-top: 10px;
+    }
+
+    .boxes {
+        width: 100px;
+        height: 100px;
+        outline: solid;
+        background-color: orange;
+    }
+
+    .table {
+        outline: solid;
+    }
+</style>
