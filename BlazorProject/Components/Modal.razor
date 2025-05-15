@@ -1,4 +1,5 @@
-﻿@inject IJSRuntime JS
+﻿@using BlazorProject.Database
+@inject IJSRuntime JS
 
 
 @if (ShowModal)
@@ -9,9 +10,10 @@
             <form>  
                 <label>Name:</label>
                 <select @bind="Name">
-                    <option value="Name1">Name1</option>
-                    <option value="Name2">Name2</option>
-                    <option value="Name3">Name3</option>
+                    @foreach (var employeeName in EmployeeNames)
+                    {
+                        <option value="@employeeName">@employeeName</option>
+                    }
                 </select>
 
                 <br />
@@ -39,6 +41,7 @@
     [Parameter] public double Distance { get; set; }
     [Parameter] public bool IsUnknownDestination { get; set; }
     private string Name { get; set; }
+    private List<string> EmployeeNames { get; set; } = new();
 
     private async Task CloseModal()
     {
@@ -60,6 +63,13 @@
 
         await ShowModalChanged.InvokeAsync(false); // Close modal after submission
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var db = new BlazorDbContext();
+        EmployeeNames = db.Employees.Select(e => e.Name).ToList(); //explain this
+    }
+
 
 
 }
