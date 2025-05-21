@@ -34,7 +34,7 @@
 @code {
 
     [Parameter] public bool ShowModal { get; set; }
-    [Parameter] public EventCallback<bool> ShowModalChanged { get; set; } //so both pages follows true/false of ShowModal
+    [Parameter] public EventCallback<bool> ShowModalChanged { get; set; } //Two way binding
     [Parameter] public string? Destination { get; set; }
     [Parameter] public double Distance { get; set; }
     [Parameter] public bool IsUnknownDestination { get; set; }
@@ -42,7 +42,7 @@
 
     private async Task CloseModal()
     {
-        await ShowModalChanged.InvokeAsync(false); // Notify parent to update
+        await ShowModalChanged.InvokeAsync(false); // Notify parent to update (two way binding)
     }
 
     private async Task HandleSubmit()
