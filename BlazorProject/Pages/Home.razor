@@ -14,14 +14,38 @@
 
 
 <div class="group">
-    <div id="Destination1" class="boxes" @onclick="@(() => OpenModal("Post Hus", 2.5))">Post Hus</div>
-    <div id="Destination2" class="boxes" @onclick="@(() => OpenModal("Apotekt", 3))">Apotekt</div>
-    <div id="Destination3" class="boxes" @onclick="@(() => OpenModal("Dyre Hospital", 7.8))">Dyre Hospital</div>
-    <div id="Destination4" class="boxes" @onclick="@(() => OpenModal("Lager", 1.2))">Lager</div>
-    <div id="Destination5" class="boxes" @onclick="@(() => OpenModal("Kunde Besøg", 6.3))">Kunde Besøg</div>
-    <div id="Destination6" class="boxes" @onclick="@(() => OpenModal("Kliniken", 4))">Klinikens</div>
-    <div id="Destination7" class="boxes" @onclick="@(() => OpenModal("Langt væk", 10))">Motorvej</div>
-    <div id="Destination8" class="boxes" @onclick="@(() => OpenModal("", 0))">Ukendt Destination</div>
+    <div id="Destination1" class="boxes" @onclick="@(() => OpenModal("Post Hus", 2.5))">
+        <img src="img/PostHus.png" alt="Alternate Text" />
+        <p>Post Hus</p>
+    </div>
+    <div id="Destination2" class="boxes" @onclick="@(() => OpenModal("Apotekt", 3))">
+        <img src="img/HaraldNyborg.png" alt="" />
+        <p>Haraldnyborg</p>
+    </div>
+    <div id="Destination3" class="boxes" @onclick="@(() => OpenModal("", 0))">
+        <img src="img/Apotek.png" alt="Alternate Text" />
+        <p>Apotek</p>
+    </div>
+    <div id="Destination4" class="boxes" @onclick="@(() => OpenModal("Dyre Hospital", 7.8))">
+        <img src="img/Dyrehospital.png" alt="Alternate Text" />
+        <p>Dyre Hospital</p>
+    </div>
+    <div id="Destination5" class="boxes" @onclick="@(() => OpenModal("Lager", 1.2))">
+        <img src="img/Grossistlager.png" alt="Alternate Text" />
+        <p>Lager</p>
+    </div>
+    <div id="Destination6" class="boxes" @onclick="@(() => OpenModal("Kunde Besøg", 6.3))">
+        <img src="img/Kundebesog.png" alt="Alternate Text" />
+        <p>Kunde Besøg</p>
+    </div>
+    <div id="Destination7" class="boxes" @onclick="@(() => OpenModal("Kliniken", 4))">
+        <img src="img/KlinikkensAndenAfdeling.png" alt="Alternate Text" />
+        <p>Klinikken</p>
+    </div>
+    <div id="Destination8" class="boxes" @onclick="@(() => OpenModal("Langt væk", 10))">
+        <img src="img/UkendtDestination.png" alt="Alternate Text" />
+        <p>Ukendt</p>
+    </div>
 
 </div>
 
@@ -51,22 +75,41 @@
         display: flex;
         justify-content: space-evenly;
         display: grid;
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(4, auto);
         grid-gap: 10px;
-        width: 400px;
-        height: 500px;
-        background-color: red;
         padding-top: 10px;
     }
 
     .boxes {
+        background-color: #ffffff;
         width: 100px;
         height: 100px;
         outline: solid;
-        background-color: orange;
+        border-radius: 5%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    img{
+        margin-top: 10px;
+        height: 60px;
+        width: auto;
     }
 
     .table {
         outline: solid;
     }
+    @@media (max-width: 800px){
+        .group {
+            grid-template-columns: repeat(2, auto);
+        }
+
+        .boxes {
+            margin-top: 5px;
+        }
+    }
+
+
 </style>
